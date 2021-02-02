@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <div class="logo">
+      <img alt="Vue logo" src="./assets/logo.png">
+    </div>
+
+    <div>
+      <Modal content="Popup Vue js !!!" v-show="isShow"/>
+      <button @click="isShow = true"> show popup </button>
+    </div>
+
+    <div>
+      <ComponentParent title="Component Parent" />
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from './components/modal/index.vue'
+import ComponentParent from './components/parent/index.vue'
 
 export default {
   name: 'App',
+
+  data() {
+    return {
+      isShow: false,
+    }
+  },
+
   components: {
-    HelloWorld
+    Modal,
+    ComponentParent
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    text-align: center;
+  }
+  .logo {
+    width: 100%;
+  }
+  
+  button {
+    margin: 20px 0;
+  }
 </style>
